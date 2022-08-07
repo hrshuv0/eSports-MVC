@@ -4,23 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eSports.web.Areas.Admin.Controllers;
 
-public class GamesController : Controller
+public class TournamentsController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public GamesController(IUnitOfWork unitOfWork)
+    public TournamentsController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
-    // GET
     public IActionResult Index()
     {
-        var result = _unitOfWork.Game.GetAll();
+        var result = _unitOfWork.Tournament.GetAll();
         
         return View(result);
     }
-
+    
     public IActionResult Create()
     {
         return View();
@@ -28,15 +27,14 @@ public class GamesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Game model)
+    public IActionResult Create(Tournament model)
     {
         if (!ModelState.IsValid) return View(model);
 
-        _unitOfWork.Game.Add(model);
+        _unitOfWork.Tournament.Add(model);
         _unitOfWork.Save();
         
         return RedirectToAction(nameof(Index));
     }
-    
     
 }

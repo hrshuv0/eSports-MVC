@@ -3,6 +3,7 @@
 public interface IUnitOfWork
 {
     IGameRepository Game { get; }
+    ITournamentRepository Tournament { get; }
 
 
     void Save();

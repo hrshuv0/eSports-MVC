@@ -1,8 +1,44 @@
-﻿<h1> page</h1>
+﻿@model IEnumerable<Game>
 
+@{
+    ViewData["Title"] = "Dashboard";
+}
 
-<div class="border mt-4">
+<div>
     <div class="row">
-        <a class="btn btn-primary" asp-action="Create">Create</a>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-10">
+                    <h2>List</h2>
+                </div>
+                <div class="col-2">
+                    <div>
+                        <a class="btn btn-primary" asp-action="Create">Create</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+

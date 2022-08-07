@@ -23,7 +23,7 @@ public class Repository<T> : IRepository<T> where T : class
         return query.FirstOrDefault();
     }
 
-    public IEnumerable<T>? GetAll(Expression<Func<T, bool>>? filter)
+    public IEnumerable<T>? GetAll(Expression<Func<T, bool>>? filter=null)
     {
         IQueryable<T> query = _dbSet;
 

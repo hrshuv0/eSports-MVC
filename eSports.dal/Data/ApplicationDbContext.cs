@@ -10,4 +10,5 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<Game>? Games { get; set; }
+    public DbSet<Tournament>? Tournaments { get; set; }
 }
