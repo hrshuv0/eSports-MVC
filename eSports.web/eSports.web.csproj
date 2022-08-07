@@ -16,10 +16,26 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\eSports.dal\eSports.dal.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Areas\Admin\Data" />
+      <Folder Include="Areas\Admin\Models" />
+      <Folder Include="Areas\Player\Data" />
+      <Folder Include="Areas\Player\Models" />
+      <Folder Include="Controllers" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Areas\Admin\Views\Games\Create.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\Games\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Player\Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Player\Views\Home\Privacy.cshtml" />
     </ItemGroup>
 
 </Project>
