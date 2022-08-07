@@ -1,4 +1,5 @@
 ﻿using eSports.dal.Data;
+using eSports.dal.Repository.IRepository;
 using eSports.entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,11 +7,11 @@ namespace eSports.web.Controllers;
 
 public class GamesController : Controller
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public GamesController(ApplicationDbContext dbContext)
+    public GamesController(IUnitOfWork unitOfWork)
     {
-        _dbContext = dbContext;
+        _unitOfWork = unitOfWork;
     }
 
     // GET
@@ -30,8 +31,8 @@ public class GamesController : Controller
     {
         if (!ModelState.IsValid) return View(model);
 
-        _dbContext.Games!.Add(model);
-        _dbContext.SaveChanges();
+        _unitOfWork.Game.Add(model);
+        _unitOfWork.Save();
         
         return RedirectToAction(nameof(Index));
     }

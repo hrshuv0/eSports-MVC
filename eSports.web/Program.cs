@@ -1,4 +1,6 @@
 using eSports.dal.Data;
+using eSports.dal.Repository;
+using eSports.dal.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connectionString, b => b.MigrationsAssembly("eSports.web"));
 });
+
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 var app = builder.Build();
 
