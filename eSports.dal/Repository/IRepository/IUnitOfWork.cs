@@ -2,6 +2,7 @@
 
 public interface IUnitOfWork
 {
+    ICategoryRepository Category { get; }
     IGameRepository Game { get; }
     ITournamentRepository Tournament { get; }
 

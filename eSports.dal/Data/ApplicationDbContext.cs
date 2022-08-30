@@ -9,6 +9,7 @@ public class ApplicationDbContext : DbContext
     {
     }
 
+    public DbSet<Category>? Categories { get; set; }
     public DbSet<Game>? Games { get; set; }
     public DbSet<Tournament>? Tournaments { get; set; }
 }
