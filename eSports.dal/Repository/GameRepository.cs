@@ -15,6 +15,6 @@ public class GameRepository : Repository<Game>, IGameRepository
 
     public void Update(Game obj)
     {
-        throw new NotImplementedException();
+        _dbContext.Games!.Update(obj);
     }
 }

@@ -23,6 +23,7 @@ public class GamesController : Controller
         return View(result);
     }
 
+    // Get
     public IActionResult Create()
     {
         var gameVm = new GameVm()
@@ -38,6 +39,7 @@ public class GamesController : Controller
         return View(gameVm);
     }
 
+    // Post
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Create(GameVm model)
@@ -45,6 +47,38 @@ public class GamesController : Controller
         if (!ModelState.IsValid) return View(model);
         
         _unitOfWork.Game.Add(model.Game);
+        _unitOfWork.Save();
+        
+        return RedirectToAction(nameof(Index));
+    }
+
+    // Get
+    public IActionResult Edit(int? id)
+    {
+        if (id is null or 0) return NotFound();
+
+        var game = _unitOfWork.Game.GetFirstOrDefault(g => g.Id == id)!;
+        var gameVm = new GameVm()
+        {
+            Game = game,
+            CategoryList = _unitOfWork.Category.GetAll()!.Select(c => new SelectListItem()
+            {
+                Text = c.Name,
+                Value = c.Id.ToString()
+            })
+        };
+
+        return View(gameVm);
+    }
+
+    // Post
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(GameVm model)
+    {
+        if (!ModelState.IsValid) return View(model);
+        
+        _unitOfWork.Game.Update(model.Game);
         _unitOfWork.Save();
         
         return RedirectToAction(nameof(Index));

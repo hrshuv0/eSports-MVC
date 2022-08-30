@@ -1,0 +1,55 @@
+﻿@using eSports.entities.ViewModels
+@model GameVm
+
+@{
+    ViewData["Title"] = "Game";
+}
+
+<div class="container mt-5 col-lg-8">
+    <div style="background-color: #d9d9d9">
+        <form method="post">
+            <input asp-for="Game.Id" hidden="hidden"/>
+
+            <div >
+                <div class="ms-3 pt-2">
+                    <h2>Update </h2>
+                    <p>Edit the Game content using the form below</p>
+                </div>
+
+                <div class="mx-3 p-3" style="background-color: #f1f1f1">
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" asp-for="Game.Name"></label>
+                        <div class="col-8">
+                            <input asp-for="Game.Name" class="form-control"/>
+                            <span asp-validation-for="Game.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-2">
+                        <label class="col-4 col-form-label" asp-for="Game.CategoryId"></label>
+                        <div class="col-8">
+                            <select asp-for="Game.CategoryId" asp-items="Model.CategoryList" class="form-select">
+                                <option disabled selected>--Select Category--</option>
+                            </select>
+                            <span asp-validation-for="Game.CategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ms-3 pt-3 pb-3 row">
+                    <button type="submit" class="btn btn-success" style="width: 48%">Update</button>
+                    <a class="btn btn-secondary ms-2" style="width: 48%" asp-action="Index">Back to list</a>
+                </div>
+
+                @* <div class="ms-3 pt-3 pb-3 row"> *@
+                @*     <button type="submit" class="btn btn-success" style="width: 48%">Create</button> *@
+                @*     <a class="btn btn-secondary ms-2" style="width: 48%" asp-action="Index">Back to list</a> *@
+                @* </div> *@
+
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
