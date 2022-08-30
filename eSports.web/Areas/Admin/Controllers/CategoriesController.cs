@@ -62,6 +62,30 @@ public class CategoriesController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+
+
+    public IActionResult Delete(int? id)
+    {
+        if (id is null or 0) return NotFound();
+        
+        var category = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+
+        if (category is null) return NotFound();
+        
+        return View(category);
+    }
     
-    
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeletePost(int? id)
+    {
+        var category = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+
+        if (category is null) return NotFound();
+
+        _unitOfWork.Category.Remove(category);
+        _unitOfWork.Save();
+        
+        return RedirectToAction(nameof(Index));
+    }
 }

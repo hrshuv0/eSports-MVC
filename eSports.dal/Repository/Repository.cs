@@ -42,11 +42,11 @@ public class Repository<T> : IRepository<T> where T : class
 
     public void Remove(T entity)
     {
-        throw new NotImplementedException();
+        _dbSet.Remove(entity);
     }
 
     public void RemoveRange(IEnumerable<T> entity)
     {
-        throw new NotImplementedException();
+        _dbSet.RemoveRange(entity);
     }
 }
