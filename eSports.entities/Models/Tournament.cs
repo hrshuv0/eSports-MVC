@@ -16,4 +16,9 @@ public class Tournament
     [ForeignKey("GameId")]
     [ValidateNever]
     public Game? Game { get; set; }
+
+    public int? TournamentCategoryId { get; set; }
+    [ForeignKey("TournamentCategoryId")]
+    [ValidateNever]
+    public TournamentCategory? TournamentCategory { get; set; }
 }

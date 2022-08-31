@@ -10,6 +10,7 @@ public class UnitOfWork : IUnitOfWork
     public ICategoryRepository Category { get; }
     public IGameRepository Game { get; }
     public ITournamentRepository Tournament { get; }
+    public ITournamentCategoryRepository TournamentCategory { get; }
 
     public UnitOfWork(ApplicationDbContext dbContext)
     {
@@ -18,6 +19,7 @@ public class UnitOfWork : IUnitOfWork
         Category = new CategoryRepository(_dbContext);
         Game = new GameRepository(_dbContext);
         Tournament = new TournamentRepository(_dbContext);
+        TournamentCategory = new TournamentCategoryRepository(_dbContext);
     }
 
 
