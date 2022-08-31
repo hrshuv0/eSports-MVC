@@ -18,7 +18,7 @@ public class GamesController : Controller
     // GET
     public IActionResult Index()
     {
-        var result = _unitOfWork.Game.GetAll();
+        var result = _unitOfWork.Game.GetAll(includeProperties:"Category");
         
         return View(result);
     }
@@ -38,12 +38,26 @@ public class GamesController : Controller
         
         return View(gameVm);
     }
+    
+    public IActionResult Details(int? id)
+    {
+        if (id is null or 0) return NotFound();
+        
+        var game = _unitOfWork.Game.GetFirstOrDefault(c => c.Id == id, includeProperties:"Category");
+
+        return View(game);
+    }
 
     // Post
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Create(GameVm model)
     {
+        model.CategoryList = _unitOfWork.Category.GetAll()!.Select(c => new SelectListItem()
+        {
+            Text = c.Name,
+            Value = c.Id.ToString()
+        });
         if (!ModelState.IsValid) return View(model);
         
         _unitOfWork.Game.Add(model.Game);
@@ -76,13 +90,46 @@ public class GamesController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Edit(GameVm model)
     {
-        if (!ModelState.IsValid) return View(model);
+        model.CategoryList = _unitOfWork.Category.GetAll()!.Select(c => new SelectListItem()
+        {
+            Text = c.Name,
+            Value = c.Id.ToString()
+        });
         
+        if (!ModelState.IsValid) return View(model);
+
         _unitOfWork.Game.Update(model.Game);
         _unitOfWork.Save();
         
         return RedirectToAction(nameof(Index));
     }
+
+    // Get
+    public IActionResult Delete(int? id)
+    {
+        if (id is null or 0) return NotFound();
+        
+        var game = _unitOfWork.Game.GetFirstOrDefault(c => c.Id == id, includeProperties:"Category");
+
+        if (game is null) return NotFound();
+        
+        return View(game);
+    }
     
+    // Post
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeletePost(int? id)
+    {
+        var game = _unitOfWork.Game.GetFirstOrDefault(c => c.Id == id);
+
+        if (game is null) return NotFound();
+
+        _unitOfWork.Game.Remove(game);
+        _unitOfWork.Save();
+        
+        return RedirectToAction(nameof(Index));
+    }
+
     
 }
