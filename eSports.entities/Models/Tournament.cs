@@ -21,4 +21,7 @@ public class Tournament
     [ForeignKey("TournamentCategoryId")]
     [ValidateNever]
     public TournamentCategory? TournamentCategory { get; set; }
+    
+    
+    public IEnumerable<TournamentPrize>? TournamentPrizes { get; set; }
 }

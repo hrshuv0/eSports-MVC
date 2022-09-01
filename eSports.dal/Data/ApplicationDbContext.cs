@@ -14,4 +14,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<Tournament>? Tournaments { get; set; }
     public DbSet<TournamentCategory>? TournamentCategories { get; set; }
     public DbSet<Prize>? Prizes { get; set; }
+    public DbSet<TournamentPrize>? TournamentPrizes { get; set; }
 }

@@ -7,4 +7,6 @@ public class Prize
     public string? PlaceName { get; set; }
     public decimal PrizeAmount { get; set; }
     public int? PrizePercentage { get; set; }
+
+    public IEnumerable<TournamentPrize>? TournamentPrizes { get; set; }
 }
