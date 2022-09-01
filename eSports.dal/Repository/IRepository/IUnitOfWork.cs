@@ -6,6 +6,7 @@ public interface IUnitOfWork
     IGameRepository Game { get; }
     ITournamentRepository Tournament { get; }
     ITournamentCategoryRepository TournamentCategory { get; }
+    IPrizeRepository Prize { get; }
 
 
     void Save();

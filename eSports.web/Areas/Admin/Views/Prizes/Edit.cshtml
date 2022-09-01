@@ -1,0 +1,59 @@
+﻿@model Prize
+
+@{
+    ViewData["Title"] = "Prize";
+}
+
+<div class="container mt-5 col-lg-8">
+    <div style="background-color: #d9d9d9">
+        <form method="post">
+
+            <div >
+                <div class="ms-3 pt-2">
+                    <h2>Edit Prize - @Model.PlaceName</h2>
+                    <p>Add new prize content using the form below</p>
+                </div>
+
+                <div class="mx-3 p-3" style="background-color: #f1f1f1">
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" asp-for="PlaceNumber"></label>
+                        <div class="col-8">
+                            <input asp-for="PlaceNumber" class="form-control"/>
+                            <span asp-validation-for="PlaceNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" asp-for="PlaceName"></label>
+                        <div class="col-8">
+                            <input asp-for="PlaceName" class="form-control"/>
+                            <span asp-validation-for="PlaceName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" asp-for="PrizeAmount"></label>
+                        <div class="col-8">
+                            <input asp-for="PrizeAmount" class="form-control"/>
+                            <span asp-validation-for="PrizeAmount" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" asp-for="PrizePercentage"></label>
+                        <div class="col-8">
+                            <input asp-for="PrizePercentage" class="form-control"/>
+                            <span asp-validation-for="PrizePercentage" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ms-3 pt-3 pb-3 row">
+                    <button type="submit" class="btn btn-success" style="width: 48%">Update</button>
+                    <a class="btn btn-secondary ms-2" style="width: 48%" asp-action="Index">Back to list</a>
+                </div>
+
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
