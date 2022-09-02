@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eSports.dal.Data;
 
@@ -11,9 +12,10 @@ using eSports.dal.Data;
 namespace eSports.web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220901171331_addedDateTimeTournament")]
+    partial class addedDateTimeTournament
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,39 +81,16 @@ namespace eSports.web.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("PlaceName")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("PlaceName2")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("PlaceName3")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PlaceNumber")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("PrizeAmount")
-                        .HasPrecision(18, 2)
+                    b.Property<decimal>("PrizeAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("PrizeAmount2")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("PrizeAmount3")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("PrizeAmount4To10")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("PrizeName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int?>("PrizePercentage")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -137,9 +116,6 @@ namespace eSports.web.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("PrizeId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -152,8 +128,6 @@ namespace eSports.web.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GameId");
-
-                    b.HasIndex("PrizeId");
 
                     b.HasIndex("TournamentCategoryId");
 
@@ -177,6 +151,29 @@ namespace eSports.web.Migrations
                     b.ToTable("TournamentCategories");
                 });
 
+            modelBuilder.Entity("eSports.entities.Models.TournamentPrize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("PrizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TournamentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrizeId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("TournamentPrizes");
+                });
+
             modelBuilder.Entity("eSports.entities.Models.Game", b =>
                 {
                     b.HasOne("eSports.entities.Models.Category", "Category")
@@ -194,24 +191,43 @@ namespace eSports.web.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eSports.entities.Models.Prize", "Prize")
-                        .WithMany()
-                        .HasForeignKey("PrizeId");
-
                     b.HasOne("eSports.entities.Models.TournamentCategory", "TournamentCategory")
                         .WithMany()
                         .HasForeignKey("TournamentCategoryId");
 
                     b.Navigation("Game");
 
+                    b.Navigation("TournamentCategory");
+                });
+
+            modelBuilder.Entity("eSports.entities.Models.TournamentPrize", b =>
+                {
+                    b.HasOne("eSports.entities.Models.Prize", "Prize")
+                        .WithMany("TournamentPrizes")
+                        .HasForeignKey("PrizeId");
+
+                    b.HasOne("eSports.entities.Models.Tournament", "Tournament")
+                        .WithMany("TournamentPrizes")
+                        .HasForeignKey("TournamentId");
+
                     b.Navigation("Prize");
 
-                    b.Navigation("TournamentCategory");
+                    b.Navigation("Tournament");
                 });
 
             modelBuilder.Entity("eSports.entities.Models.Category", b =>
                 {
                     b.Navigation("Games");
+                });
+
+            modelBuilder.Entity("eSports.entities.Models.Prize", b =>
+                {
+                    b.Navigation("TournamentPrizes");
+                });
+
+            modelBuilder.Entity("eSports.entities.Models.Tournament", b =>
+                {
+                    b.Navigation("TournamentPrizes");
                 });
 #pragma warning restore 612, 618
         }

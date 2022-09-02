@@ -23,11 +23,19 @@ public class PrizesController : Controller
         return View(result);
     }
     
+    public IActionResult Details(int? id)
+    {
+        var prize = _unitOfWork.Prize.GetFirstOrDefault(g => g.Id == id)!;
+        
+        return View(prize);
+    }
     
     // Get
     public IActionResult Create()
     {
-        return View();
+        Prize prize = new Prize();
+        
+        return View(prize);
     }
 
     // Post
@@ -93,6 +101,7 @@ public class PrizesController : Controller
         
         return RedirectToAction(nameof(Index));
     }
+
 
     
 }

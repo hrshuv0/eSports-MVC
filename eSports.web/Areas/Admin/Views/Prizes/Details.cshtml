@@ -8,7 +8,7 @@
     <input asp-for="Id" hidden/>
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Delete Prize</h2>
+            <h2 class="text-primary">Details Prize - @Model.PrizeName</h2>
             <hr/>
         </div>
         @* <div asp-validation-summary="All"></div> *@
@@ -103,9 +103,8 @@
                 </div>
             </div>
 
-
         </div>
-        <button type="submit" class="btn btn-danger mt-2 ms-3" style="width: 150px">Delete</button>
+        <a asp-controller="Prizes" asp-action="Edit" class="btn btn-primary mt-2 ms-3" asp-route-id="@Model.Id" style="width: 150px">Edit</a>
         <a asp-controller="Prizes" asp-action="Index" class="btn btn-secondary mt-2" style="width: 150px">Back to list</a>
     </div>
 </form>

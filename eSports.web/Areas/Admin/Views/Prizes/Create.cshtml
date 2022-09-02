@@ -15,34 +15,98 @@
                 </div>
 
                 <div class="mx-3 p-3" style="background-color: #f1f1f1">
-                    <div class="form-group row">
-                        <label class="col-4 col-form-label" asp-for="PlaceNumber"></label>
-                        <div class="col-8">
-                            <input asp-for="PlaceNumber" class="form-control"/>
-                            <span asp-validation-for="PlaceNumber" class="text-danger"></span>
+                    <div class="row form-group">
+                        <label class="col-2 col-form-label" asp-for="PrizeName"></label>
+                        <div class="col-10">
+                            <input asp-for="PrizeName" class="form-control"/>
+                            <span asp-validation-for="PrizeName" class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-4 col-form-label" asp-for="PlaceName"></label>
-                        <div class="col-8">
-                            <input asp-for="PlaceName" class="form-control"/>
-                            <span asp-validation-for="PlaceName" class="text-danger"></span>
+                    
+                    <div class="form-group row mt-2">
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PlaceName"></label>
+                                <div class="col-8">
+                                    <input asp-for="PlaceName" class="form-control"/>
+                                    <span asp-validation-for="PlaceName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PrizeAmount"></label>
+                                <div class="col-8">
+                                    <input asp-for="PrizeAmount" class="form-control"/>
+                                    <span asp-validation-for="PrizeAmount" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-4 col-form-label" asp-for="PrizeAmount"></label>
-                        <div class="col-8">
-                            <input asp-for="PrizeAmount" class="form-control"/>
-                            <span asp-validation-for="PrizeAmount" class="text-danger"></span>
+                    
+                    <div class="form-group row  mt-2">
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PlaceName2"></label>
+                                <div class="col-8">
+                                    <input asp-for="PlaceName2" class="form-control"/>
+                                    <span asp-validation-for="PlaceName2" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PrizeAmount2"></label>
+                                <div class="col-8">
+                                    <input asp-for="PrizeAmount2" class="form-control"/>
+                                    <span asp-validation-for="PrizeAmount2" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-4 col-form-label" asp-for="PrizePercentage"></label>
-                        <div class="col-8">
-                            <input asp-for="PrizePercentage" class="form-control"/>
-                            <span asp-validation-for="PrizePercentage" class="text-danger"></span>
+                    <div class="form-group row  mt-2">
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PlaceName3"></label>
+                                <div class="col-8">
+                                    <input asp-for="PlaceName3" class="form-control"/>
+                                    <span asp-validation-for="PlaceName3" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PrizeAmount3"></label>
+                                <div class="col-8">
+                                    <input asp-for="PrizeAmount3" class="form-control"/>
+                                    <span asp-validation-for="PrizeAmount3" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="form-group row  mt-2">
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label">Place Name</label>
+                                <div class="col-8">
+                                    <input disabled value="4th to 10th" class="form-control"/>
+                                    <span asp-validation-for="PlaceName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <label class="col-4 col-form-label" asp-for="PrizeAmount4To10"></label>
+                                <div class="col-8">
+                                    <input asp-for="PrizeAmount4To10" class="form-control"/>
+                                    <span asp-validation-for="PrizeAmount4To10" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
                 </div>
 
                 <div class="ms-3 pt-3 pb-3 row">

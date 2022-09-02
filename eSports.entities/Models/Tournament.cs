@@ -17,11 +17,19 @@ public class Tournament
     [ValidateNever]
     public Game? Game { get; set; }
 
+    [Required] public int TotalMatch { get; set; } = 3;
+
+    public DateTime? StartTime { get; set; }
+    public DateTime? EndTime { get; set; }
+
     public int? TournamentCategoryId { get; set; }
     [ForeignKey("TournamentCategoryId")]
     [ValidateNever]
     public TournamentCategory? TournamentCategory { get; set; }
+
+    public int? PrizeId { get; set; }
+    [ForeignKey("PrizeId")]
+    [ValidateNever]
+    public Prize? Prize { get; set; }
     
-    
-    public IEnumerable<TournamentPrize>? TournamentPrizes { get; set; }
 }

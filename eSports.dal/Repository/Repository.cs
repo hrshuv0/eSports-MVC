@@ -38,7 +38,9 @@ public class Repository<T> : IRepository<T> where T : class
             query = query.Where(filter);
         }
 
-        if (includeProperties is not null)
+        var count = query.ToList().Count;
+
+        if (includeProperties is not null && count > 0)
         {
             foreach (var property in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 query = query.Include(property).DefaultIfEmpty();
