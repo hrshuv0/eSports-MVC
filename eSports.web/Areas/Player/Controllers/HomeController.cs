@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using eSports.dal.Repository.IRepository;
+using eSports.entities.ViewModels;
 using eSports.web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var result = _unitOfWork.Game.GetAll();
+        HomeVm homeVm = new HomeVm()
+        {
+            Tournaments = _unitOfWork.Tournament.GetAll(includeProperties:"Game,TournamentCategory,Prize"),
+            Games = _unitOfWork.Game.GetAll(includeProperties:"Category")
+        };
         
-        return View(result);
+        return View(homeVm);
     }
 
     public IActionResult Privacy()

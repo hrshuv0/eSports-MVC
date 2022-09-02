@@ -14,7 +14,7 @@ public class Tournament
     public string? Name { get; set; }
 
     [Display(Name = "Game")]
-    public int GameId { get; set; }
+    public int? GameId { get; set; }
     [ForeignKey("GameId")]
     [ValidateNever]
     public Game? Game { get; set; }
