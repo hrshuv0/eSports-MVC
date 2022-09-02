@@ -11,6 +11,7 @@ public class Game
     
     [Required]
     [StringLength(50)]
+    [Display(Name = "Game Name")]
     public string? Name { get; set; }
 
     public string? Description { get; set; }

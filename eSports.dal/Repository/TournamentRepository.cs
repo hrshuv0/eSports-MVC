@@ -15,6 +15,6 @@ public class TournamentRepository : Repository<Tournament>, ITournamentRepositor
 
     public void Update(Tournament obj)
     {
-        throw new NotImplementedException();
+        _dbContext.Tournaments!.Update(obj);
     }
 }

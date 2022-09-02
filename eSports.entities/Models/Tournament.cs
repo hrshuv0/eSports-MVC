@@ -10,18 +10,24 @@ public class Tournament
     
     [Required]
     [StringLength(100)]
+    [Display(Name="Tournament Name")]
     public string? Name { get; set; }
 
+    [Display(Name = "Game")]
     public int GameId { get; set; }
     [ForeignKey("GameId")]
     [ValidateNever]
     public Game? Game { get; set; }
 
-    [Required] public int TotalMatch { get; set; } = 3;
+    [Required] 
+    public int TotalMatch { get; set; } = 3;
 
+    [Display(Name = "Start Time")]
     public DateTime? StartTime { get; set; }
+    [Display(Name = "End Time")]
     public DateTime? EndTime { get; set; }
 
+    [Display(Name = "Tournament Category")]
     public int? TournamentCategoryId { get; set; }
     [ForeignKey("TournamentCategoryId")]
     [ValidateNever]
@@ -31,5 +37,7 @@ public class Tournament
     [ForeignKey("PrizeId")]
     [ValidateNever]
     public Prize? Prize { get; set; }
+
+    public decimal? PrizePool { get; set; }
     
 }

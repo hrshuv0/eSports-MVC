@@ -11,7 +11,7 @@
         <div class="col-10">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="text-primary">Create new</h2>
+                    <h2 class="text-primary">Create new Tournament</h2>
                 </div>
 
                 <div class="mb-3">
@@ -32,11 +32,29 @@
                     <span asp-validation-for="Tournament!.TotalMatch" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
+                    <label asp-for="Tournament!.StartTime"></label>
+                    <input asp-for="Tournament!.StartTime" class="form-control"/>
+                    <span asp-validation-for="Tournament!.StartTime" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tournament!.EndTime"></label>
+                    <input asp-for="Tournament!.EndTime" class="form-control"/>
+                    <span asp-validation-for="Tournament!.EndTime" class="text-danger"></span>
+                </div>
+                
+                <div class="mb-3">
                     <label asp-for="Tournament!.TournamentCategoryId"></label>
                     <select asp-for="Tournament!.TournamentCategoryId" asp-items="Model.CategoryList" class="form-control">
                         <option disabled selected>--select game--</option>
                     </select>
                     <span asp-validation-for="Tournament!.TournamentCategoryId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Tournament!.PrizeId"></label>
+                    <select asp-for="Tournament!.PrizeId" asp-items="Model.PrizeList" class="form-control">
+                        <option disabled selected>--select prize--</option>
+                    </select>
+                    <span asp-validation-for="Tournament!.PrizeId" class="text-danger"></span>
                 </div>
 
                 <div class="col-12">

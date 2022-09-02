@@ -6,6 +6,7 @@ namespace eSports.entities.ViewModels;
 public class TournamentVm
 {
     public Tournament? Tournament { get; set; }
+    public decimal? PrizePool { get; set; }
     
     public IEnumerable<SelectListItem>? PrizeList { get; set; }
     public IEnumerable<SelectListItem>? GameList { get; set; }
