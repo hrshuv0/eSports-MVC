@@ -17,8 +17,10 @@ public class Game
     public string? Description { get; set; }
 
     [StringLength(100)]
+    [Display(Name = "Image")]
     public string? ImageUrl { get; set; }
     
+    [Display(Name = "Category")]
     public int? CategoryId { get; set; }
     [ForeignKey("CategoryId")]
     [ValidateNever]

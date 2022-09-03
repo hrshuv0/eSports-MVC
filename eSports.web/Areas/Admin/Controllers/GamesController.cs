@@ -9,10 +9,12 @@ namespace eSports.web.Areas.Admin.Controllers;
 public class GamesController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IWebHostEnvironment _hostEnvironment;
 
-    public GamesController(IUnitOfWork unitOfWork)
+    public GamesController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
     {
         _unitOfWork = unitOfWork;
+        _hostEnvironment = hostEnvironment;
     }
 
     // GET
@@ -23,6 +25,16 @@ public class GamesController : Controller
         return View(result);
     }
 
+    // Get
+    public IActionResult Details(int? id)
+    {
+        if (id is null or 0) return NotFound();
+        
+        var game = _unitOfWork.Game.GetFirstOrDefault(c => c.Id == id, includeProperties:"Category");
+
+        return View(game);
+    }
+    
     // Get
     public IActionResult Create()
     {
@@ -39,26 +51,31 @@ public class GamesController : Controller
         return View(gameVm);
     }
     
-    public IActionResult Details(int? id)
-    {
-        if (id is null or 0) return NotFound();
-        
-        var game = _unitOfWork.Game.GetFirstOrDefault(c => c.Id == id, includeProperties:"Category");
-
-        return View(game);
-    }
-
     // Post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(GameVm model)
+    public IActionResult Create(GameVm model, IFormFile? file)
     {
+        if (!ModelState.IsValid) return View(model);
+        
         model.CategoryList = _unitOfWork.Category.GetAll()!.Select(c => new SelectListItem()
         {
             Text = c.Name,
             Value = c.Id.ToString()
         });
-        if (!ModelState.IsValid) return View(model);
+
+        string wwwRootPath = _hostEnvironment.WebRootPath;
+        if (file is not null)
+        {
+            string fileName = Guid.NewGuid().ToString();
+            var upload = Path.Combine(wwwRootPath, @"images\games");
+            var extension = Path.GetExtension(file.FileName);
+
+            using var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create);
+            file.CopyTo(fileStream);
+
+            model.Game.ImageUrl = @"\images\games\" + fileName + extension;
+        }
         
         _unitOfWork.Game.Add(model.Game);
         _unitOfWork.Save();

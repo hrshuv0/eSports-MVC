@@ -30,6 +30,7 @@
       <Folder Include="Areas\Player\Data" />
       <Folder Include="Areas\Player\Models" />
       <Folder Include="Controllers" />
+      <Folder Include="wwwroot\images\games" />
     </ItemGroup>
 
     <ItemGroup>
