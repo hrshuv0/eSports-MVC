@@ -105,7 +105,7 @@ public class GamesController : Controller
     // Post
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(GameVm model)
+    public IActionResult Edit(GameVm model, IFormFile? file)
     {
         model.CategoryList = _unitOfWork.Category.GetAll()!.Select(c => new SelectListItem()
         {
@@ -114,6 +114,26 @@ public class GamesController : Controller
         });
         
         if (!ModelState.IsValid) return View(model);
+        
+        string wwwRootPath = _hostEnvironment.WebRootPath;
+        if (file is not null)
+        {
+            string fileName = Guid.NewGuid().ToString();
+            var upload = Path.Combine(wwwRootPath, @"images\games");
+            var extension = Path.GetExtension(file.FileName);
+
+            if (model.Game.ImageUrl is not null)
+            {
+                var oldImagePath = Path.Combine(wwwRootPath, model.Game.ImageUrl.TrimStart('\\'));
+                if(System.IO.File.Exists(oldImagePath))
+                    System.IO.File.Delete(oldImagePath);
+            }
+            
+            using var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create);
+            file.CopyTo(fileStream);
+
+            model.Game.ImageUrl = @"\images\games\" + fileName + extension;
+        }
 
         _unitOfWork.Game.Update(model.Game);
         _unitOfWork.Save();
@@ -141,6 +161,14 @@ public class GamesController : Controller
         var game = _unitOfWork.Game.GetFirstOrDefault(c => c.Id == id);
 
         if (game is null) return NotFound();
+        
+        string wwwRootPath = _hostEnvironment.WebRootPath;
+        if (game.ImageUrl is not null)
+        {
+            var oldImagePath = Path.Combine(wwwRootPath, game.ImageUrl.TrimStart('\\'));
+            if(System.IO.File.Exists(oldImagePath))
+                System.IO.File.Delete(oldImagePath);
+        }
 
         _unitOfWork.Game.Remove(game);
         _unitOfWork.Save();
