@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\eSports.entities\eSports.entities.csproj" />
+      <ProjectReference Include="..\eSports.utility\eSports.utility.csproj" />
     </ItemGroup>
 
 </Project>

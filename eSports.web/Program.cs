@@ -1,6 +1,7 @@
 using eSports.dal.Data;
 using eSports.dal.Repository;
 using eSports.dal.Repository.IRepository;
+using eSports.dal.SeedData;
 using eSports.entities.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     {
@@ -61,6 +64,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+SeedDatabase();
+    
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -68,3 +73,10 @@ app.MapControllerRoute(
     pattern: "{area=Player}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+void SeedDatabase()
+{
+    using var scope = app.Services.CreateScope();
+    var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+    dbInitializer.Initialize();
+}
