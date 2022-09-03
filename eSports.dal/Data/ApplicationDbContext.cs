@@ -1,9 +1,10 @@
 ﻿using eSports.entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace eSports.dal.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext
 {
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
@@ -29,4 +30,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<Tournament>? Tournaments { get; set; }
     public DbSet<TournamentCategory>? TournamentCategories { get; set; }
     public DbSet<Prize>? Prizes { get; set; }
+    public DbSet<ApplicationUser> ApplicationUser { get; set; }
 }
