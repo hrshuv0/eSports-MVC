@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
     $.ajax({
-        url:"Admin/players/getAll",
+        url:"players/getAll",
         cache:false,
         method:"GET",
         success:function (response){
@@ -15,5 +15,21 @@ $(document).ready(function(){
 
 function updateDataTable(data)
 {
+    alert("load data table working!")
+    console.log(data)
+    
+    dataTable = $('#playerTableId').DataTable({
+        "bDestroy":true,
+        data:data,
+        "columns":[
+            {"data":"userName", "sDefaultContent":"" },
+            {"data":"gameId", "sDefaultContent":"" },
+            {"data":"email", "sDefaultContent":"" },
+            {"data":"city", "sDefaultContent":"" },
+            {"data":"phoneNumber", "sDefaultContent":"" }
+        ]
+        
+        }        
+    );
     
 }
