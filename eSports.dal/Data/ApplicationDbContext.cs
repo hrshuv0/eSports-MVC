@@ -18,7 +18,7 @@ public class ApplicationDbContext : IdentityDbContext
                      .SelectMany(t => t.GetProperties())
                      .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
         {
-            property.SetPrecision(18);
+            property.SetPrecision(10); // 18
             property.SetScale(2);
         }
         
@@ -30,5 +30,6 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Tournament>? Tournaments { get; set; }
     public DbSet<TournamentCategory>? TournamentCategories { get; set; }
     public DbSet<Prize>? Prizes { get; set; }
-    public DbSet<ApplicationUser> ApplicationUser { get; set; }
+    public DbSet<ApplicationUser>? ApplicationUser { get; set; }
+    public DbSet<Team>? Teams { get; set; }
 }

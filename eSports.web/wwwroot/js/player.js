@@ -15,8 +15,6 @@ $(document).ready(function(){
 
 function updateDataTable(data)
 {
-    alert("load data table working!")
-    console.log(data)
     
     dataTable = $('#playerTableId').DataTable({
         "bDestroy":true,

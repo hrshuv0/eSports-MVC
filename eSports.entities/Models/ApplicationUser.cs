@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace eSports.entities.Models;
 
@@ -19,6 +21,11 @@ public class ApplicationUser : IdentityUser
     
     [StringLength(20)]
     public string? City { get; set; }
+
+    public int? TeamId { get; set; }
+    [ForeignKey("TeamId")]
+    [ValidateNever]
+    public Team? Team { get; set; }
     
     
 }
