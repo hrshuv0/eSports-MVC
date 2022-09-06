@@ -43,9 +43,9 @@ builder.Services.AddAuthentication(options => {
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = $"/Auth/Login";
-    options.LogoutPath = $"/Auth/Logout";
-    options.AccessDeniedPath = $"/Auth/AccessDenied";
+    options.LoginPath = $"/Identity/Auth/Login";
+    options.LogoutPath = $"/Identity/Auth/Logout";
+    options.AccessDeniedPath = $"/Identity/Auth/AccessDenied";
 });
 
 
@@ -65,7 +65,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 SeedDatabase();
-    
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

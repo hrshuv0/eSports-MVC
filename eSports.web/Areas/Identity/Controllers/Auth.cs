@@ -90,6 +90,16 @@ public class AuthController : Controller
         return View(model);
     }
     
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction(nameof(Index), "Home", new {area="Player"});
+    }
+
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
     
     
 }
