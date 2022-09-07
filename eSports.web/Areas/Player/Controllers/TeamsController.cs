@@ -1,5 +1,8 @@
-﻿using eSports.dal.Repository.IRepository;
+﻿using System.Security.Claims;
+using eSports.dal.Repository.IRepository;
 using eSports.entities.Models;
+using eSports.utility.StaticData;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eSports.web.Areas.Player.Controllers;
@@ -8,10 +11,12 @@ namespace eSports.web.Areas.Player.Controllers;
 public class TeamsController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public TeamsController(IUnitOfWork unitOfWork)
+    public TeamsController(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager)
     {
         _unitOfWork = unitOfWork;
+        _userManager = userManager;
     }
 
     public IActionResult Index()
@@ -32,6 +37,13 @@ public class TeamsController : Controller
     public IActionResult Create(Team model)
     {
         if (!ModelState.IsValid) return View(model);
+
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+
+        var user = _unitOfWork.Player.GetFirstOrDefault(u => u.Id == userId);
+
+        model.TeamMembers = new List<ApplicationUser>(){user!};
+        _userManager.AddToRoleAsync(user!, UserRoles.Leader).GetAwaiter().GetResult();
 
         _unitOfWork.Team.Add(model);
         _unitOfWork.Save();
