@@ -8,6 +8,8 @@ public interface IUnitOfWork
     ITournamentCategoryRepository TournamentCategory { get; }
     IPrizeRepository Prize { get; }
     IPlayerRepository Player { get; }
+    ITeamRepository Team { get; }
+    
 
 
     void Save();

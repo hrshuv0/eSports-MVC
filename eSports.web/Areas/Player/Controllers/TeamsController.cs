@@ -2,21 +2,21 @@
 using eSports.entities.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace eSports.web.Areas.Admin.Controllers;
+namespace eSports.web.Areas.Player.Controllers;
 
-[Area("Admin")]
-public class CategoriesController : Controller
+[Area("Player")]
+public class TeamsController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public CategoriesController(IUnitOfWork unitOfWork)
+    public TeamsController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
     public IActionResult Index()
     {
-        var result = _unitOfWork.Category.GetAll();
+        var result = _unitOfWork.Team.GetAll();
 
         return View(result);
     }
@@ -29,11 +29,11 @@ public class CategoriesController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Category model)
+    public IActionResult Create(Team model)
     {
         if (!ModelState.IsValid) return View(model);
 
-        _unitOfWork.Category.Add(model);
+        _unitOfWork.Team.Add(model);
         _unitOfWork.Save();
         
         return RedirectToAction(nameof(Index));
@@ -44,21 +44,21 @@ public class CategoriesController : Controller
     {
         if (id is null or 0) return NotFound();
         
-        var category = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+        var team = _unitOfWork.Team.GetFirstOrDefault(c => c.Id == id);
 
-        if (category is null) return NotFound();
+        if (team is null) return NotFound();
         
-        return View(category);
+        return View(team);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(Category category)
+    public IActionResult Edit(Team team)
     {
         if (!ModelState.IsValid)
-            return View(category);
+            return View(team);
         
-        _unitOfWork.Category.Update(category);
+        _unitOfWork.Team.Update(team);
         _unitOfWork.Save();
 
         return RedirectToAction(nameof(Index));
@@ -69,22 +69,22 @@ public class CategoriesController : Controller
     {
         if (id is null or 0) return NotFound();
         
-        var category = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+        var team = _unitOfWork.Team.GetFirstOrDefault(c => c.Id == id);
 
-        if (category is null) return NotFound();
+        if (team is null) return NotFound();
         
-        return View(category);
+        return View(team);
     }
     
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public IActionResult DeletePost(int? id)
     {
-        var category = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+        var team = _unitOfWork.Team.GetFirstOrDefault(c => c.Id == id);
 
-        if (category is null) return NotFound();
+        if (team is null) return NotFound();
 
-        _unitOfWork.Category.Remove(category);
+        _unitOfWork.Team.Remove(team);
         _unitOfWork.Save();
         
         return RedirectToAction(nameof(Index));

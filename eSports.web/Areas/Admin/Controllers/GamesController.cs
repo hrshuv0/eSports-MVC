@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace eSports.web.Areas.Admin.Controllers;
 
+[Area("Admin")]
 public class GamesController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;

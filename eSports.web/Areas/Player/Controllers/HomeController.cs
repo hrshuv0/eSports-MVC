@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eSports.web.Areas.Player.Controllers;
 
+[Area("Player")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

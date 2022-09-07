@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eSports.web.Areas.Identity.Controllers;
 
+[Area("Identity")]
 public class AuthController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;

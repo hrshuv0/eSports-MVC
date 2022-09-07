@@ -13,6 +13,7 @@ public class UnitOfWork : IUnitOfWork
     public ITournamentCategoryRepository TournamentCategory { get; }
     public IPrizeRepository Prize { get; }
     public IPlayerRepository Player { get; }
+    public ITeamRepository Team { get; }
 
     public UnitOfWork(ApplicationDbContext dbContext)
     {
@@ -24,6 +25,7 @@ public class UnitOfWork : IUnitOfWork
         TournamentCategory = new TournamentCategoryRepository(_dbContext);
         Prize = new PrizeRepository(_dbContext);
         Player = new PlayerRepository(_dbContext);
+        Team = new TeamRepository(_dbContext);
     }
 
 

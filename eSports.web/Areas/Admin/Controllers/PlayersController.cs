@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eSports.web.Areas.Admin.Controllers;
 
+[Area("Admin")]
 public class PlayersController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
