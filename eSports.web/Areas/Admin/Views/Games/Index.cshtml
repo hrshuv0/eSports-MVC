@@ -4,10 +4,10 @@
     ViewData["Title"] = "Game";
 }
 
-<div class="container p-3 mt-5" style="background-color: #f1f1f1">
+<div class="container p-3 mt-5  bg-gradient">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Game List</h2>
+            <h2 class="text-info">Game List</h2>
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Games" asp-action="Create" class="btn btn-primary">
@@ -19,7 +19,7 @@
     <br/><br/>
 
 
-    <table class="table table-bordered table-striped" style="width: 100%">
+    <table class="table table-bordered table-striped table-dark" style="width: 100%">
         <thead>
         <tr class="text-center">
             <th></th>
@@ -40,11 +40,11 @@
                 <td class="text-center">
                     <div class="w-75 btn-group" role="group">
                         <a asp-controller="Games" asp-action="Edit" asp-route-id="@item.Id"
-                           class="btn btn-info m-2">
+                           class="btn btn-primary m-2">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
                         <a asp-controller="Games" asp-action="Details" asp-route-id="@item.Id"
-                           class="btn btn-warning m-2">
+                           class="btn btn-info m-2">
                             <i class="bi bi-trash-fill"></i> Details
                         </a>
                         <a asp-controller="Games" asp-action="Delete" asp-route-id="@item.Id"
