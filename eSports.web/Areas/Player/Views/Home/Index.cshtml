@@ -4,15 +4,19 @@
 @{
     ViewData["Title"] = "Dashboard";
     var imageNumber = 0;
+    var imageCount = Model.Games!.Count();
 }
 
 <div class="container-fluid" style="width: 100%">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
+        <div class="carousel-indicators">
+            @for (var idx = 0; idx < imageCount; idx++)
+            {
+                var idxClass = idx == 0 ? "active" : "";
+                var ariaCurrent = idx == 0 ? "true" : "";
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="@idx" class="@idxClass" aria-current="@ariaCurrent"  aria-label="Slide @idx"></button>
+            }
+        </div>
       <div class="carousel-inner" role="listbox"  style="height: 500px;">
         
         @foreach (var game in Model.Games!)
