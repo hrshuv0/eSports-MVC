@@ -29,7 +29,7 @@ public class Repository<T> : IRepository<T> where T : class
         return query.FirstOrDefault();
     }
 
-    public IEnumerable<T>? GetAll(Expression<Func<T, bool>>? filter=null, string? includeProperties=null)
+    public IList<T>? GetAll(Expression<Func<T, bool>>? filter=null, string? includeProperties=null)
     {
         IQueryable<T> query = _dbSet;
 

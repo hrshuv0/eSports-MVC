@@ -45,7 +45,7 @@ public class DbInitializer : IDbInitializer
             {
                 UserName = "admin",
                 Email = "admin@email.com",
-                FirstName = "Mr",
+                FirstName = "Super",
                 LastName = "Admin",
                 PhoneNumber = "+966567",
                 Address = "5/A, NY",
