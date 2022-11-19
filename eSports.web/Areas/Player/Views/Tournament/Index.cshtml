@@ -73,7 +73,7 @@
                             {
                                 <tr>
                                     <td>
-                                        <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@tournament.Name</strong>
+                                        <a asp-area="Player" asp-controller="Tournament" asp-action="Details" asp-route-id="@tournament.Id"><strong>@tournament.Name</strong></a>
                                     </td>
                                     <td>
                                         <a asp-area="Player" asp-controller="Game" asp-action="Details" asp-route-id="@tournament.GameId">

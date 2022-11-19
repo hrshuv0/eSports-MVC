@@ -38,6 +38,6 @@ public class Tournament
     [ValidateNever]
     public Prize? Prize { get; set; }
 
-    public decimal? PrizePool { get; set; }
+    public decimal PrizePool { get; set; }
     
 }

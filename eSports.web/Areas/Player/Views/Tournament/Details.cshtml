@@ -1,0 +1,98 @@
+﻿@model TournamentDetailsVm
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<div class="row">
+    <div class="col-8">
+        <div class="card p-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h2 class="card-title">
+                            <strong>@Model.Tournament!.Name</strong>
+                        </h2>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-primary">
+                            <i class="bx bx-crosshair"></i>&nbsp; Register
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <figure class="mb-0">
+
+                    <figcaption class="blockquote-footer my-2 text-muted">
+                        @Model.Tournament.TournamentCategory!.Name <cite title="Source Title">Source Title</cite>
+                    </figcaption>
+
+                    <blockquote class="blockquote pt-2">
+                        <p>
+                            A well-known quote, contained in a blockquote element.
+                            A well-known quote, contained in a blockquote element.
+                            A well-known quote, contained in a blockquote element.
+                            A well-known quote, contained in a blockquote element.
+                            A well-known quote, contained in a blockquote element.
+                        </p>
+                    </blockquote>
+                </figure>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4">
+        <div class="col-md-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="divider divider-warning">
+                        <h2 style="font-size: 1.4rem" class="divider-text">Tournaments</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @foreach (var tournament in Model.TournamentList!)
+        {
+            <a href="javascript:0" class="text-secondary card card-default my-1" data-toggle="modal" data-target="#modal-contact">
+                <div class="row p-4">
+                    <div class="col-md-4 col-sm-6">
+                        <img src="~/theme/sleek/theme/assets/img/user/u-xl-1.jpg" class="mr-3 img-fluid rounded" alt="Avatar Image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-2 text-dark">@tournament.Name</h5>
+
+                            <ul class="list-unstyled">
+                                <li class="d-flex mb-1">
+                                    <i class="mdi mdi-email mr-1"></i>
+                                    <span>@tournament.TournamentCategory!.Name - @tournament.Game!.Name</span>
+                                </li>
+
+                                <li class="d-flex mb-1">
+                                    <i class="mdi mdi-phone mr-1"></i>
+                                    <span>
+                                        <strong>Prize Pool: </strong>@tournament.PrizePool.ToString("c")
+                                    </span>
+                                </li>
+                                <li class="d-flex mb-1">
+                                    <i class="mdi mdi-map mr-1"></i>
+                                    <span>@tournament.StartTime.ToString("dd MMMM yyyy, HH:MM tt")</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        }
+
+
+    </div>
+
+</div>

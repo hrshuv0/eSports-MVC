@@ -65,7 +65,7 @@ public class TournamentsController : Controller
         var prize = _unitOfWork.Prize.GetFirstOrDefault(p => p.Id == model.Tournament!.PrizeId);
 
         model.Tournament!.PrizePool =
-            prize!.PrizeAmount + prize.PrizeAmount2 + prize.PrizeAmount3 + prize.PrizeAmount4To10 * 6;
+            prize!.PrizeAmount + prize.PrizeAmount2 + prize.PrizeAmount3 + prize.PrizeAmount4To10 * 6 ?? 0;
         
         _unitOfWork.Tournament.Add(model.Tournament!);
         _unitOfWork.Save();
@@ -115,7 +115,7 @@ public class TournamentsController : Controller
         var prize = _unitOfWork.Prize.GetFirstOrDefault(p => p.Id == model.Tournament!.PrizeId);
 
         model.Tournament!.PrizePool =
-            prize!.PrizeAmount + prize.PrizeAmount2 + prize.PrizeAmount3 + prize.PrizeAmount4To10 * 6;
+            prize!.PrizeAmount + prize.PrizeAmount2 + prize.PrizeAmount3 + prize.PrizeAmount4To10 * 6 ?? 0;
         
         _unitOfWork.Tournament.Update(model.Tournament!);
         _unitOfWork.Save();
