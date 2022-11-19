@@ -1,0 +1,66 @@
+﻿@using System.Globalization
+@model GameDetailsVm?
+
+@{
+    ViewBag.Title = "Game";
+}
+
+
+<div class="container-fluid px-0" style="width: 100%">
+    <div>
+        <img class="w-100" src="@Model.Game.ImageUrl" alt=""/>
+    </div>
+
+
+    <div>
+        <div class="row">
+            <div class="col-7 pe-5">
+
+            </div>
+
+            <div class="col-5">
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="divider divider-warning">
+                                <h2 style="font-size: 1.8rem" class="divider-text">Tournaments</h2>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @foreach (var tournament in Model.TournamentList!)
+                {
+                    <div class="row m1-2">
+                        <div class="col-md">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@tournament.Name</h5>
+                                            <p class="card-text">
+                                                This is a wider card with supporting text below as a natural lead-in to additional content.
+                                                This content is a little bit longer.
+                                            </p>
+                                            <p class="card-text"> Start time : 
+                                                <small class="">@tournament.StartTime.ToString("dd MMMM yyyy, hh:mm tt")</small> 
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="card-img card-img-right" src="~/theme/sneat/assets/img/elements/17.jpg" alt="Card image"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

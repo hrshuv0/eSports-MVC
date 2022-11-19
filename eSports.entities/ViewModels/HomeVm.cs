@@ -4,6 +4,6 @@ namespace eSports.entities.ViewModels;
 
 public class HomeVm
 {
-    public IEnumerable<Tournament>? Tournaments { get; set; }
-    public IEnumerable<Game>? Games { get; set; }
+    public IList<Tournament>? Tournaments { get; set; }
+    public IList<Game>? Games { get; set; }
 }
