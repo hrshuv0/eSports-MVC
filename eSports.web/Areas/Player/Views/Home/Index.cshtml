@@ -51,7 +51,7 @@
     <div class="card">
         <div class="card-body">
             <div class="divider divider-success">
-                <div class="divider-text">Upcoming Tournament</div>
+                <div class="divider-text" style="font-size: 1.8rem">Upcoming Tournament</div>
             </div>
         </div>
     </div>
@@ -104,28 +104,28 @@
                     <td>
                         <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@tournament.Name</strong>
                     </td>
-                    <td><a asp-area="Admin" asp-controller="Games" asp-action="Details" asp-route-id="@tournament.GameId">
-                        <img style="height: 20px;width: 20px; border-radius: 50%" src="@tournament.Game!.ImageUrl" alt=""/>@tournament.Game!.Name</a></td>
-                    <td>
-                        @tournament.StartTime
+                    <td><a  asp-area="Player" asp-controller="Game" asp-action="Details" asp-route-id="@tournament.GameId">
+                        <img class="me-2" style="height: 20px;width: 20px; border-radius: 50%" src="@tournament.Game!.ImageUrl" alt=""/>@tournament.Game!.Name</a></td>
+                    <td class="text-center">
+                        @tournament.StartTime.ToString("dd MMMM yyyy")
                     </td>
-                    <td>
+                    <td class="text-center">
                         @tournament.PrizePool
                     </td>
-                    <td>
+                    <td class="text-center">
                         <span class="badge bg-label-primary me-1">Active</span>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                 <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <i class="bx bx-edit-alt me-1"></i> Watch
+                                    <i class="bx bx-tv me-1"></i> Watch
                                 </a>
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <i class="bx bx-trash me-1"></i> Register
+                                    <i class="bx bx-log-in-circle me-1"></i> Register
                                 </a>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ public class Tournament
     public int TotalMatch { get; set; } = 3;
 
     [Display(Name = "Start Time")]
-    public DateTime? StartTime { get; set; }
+    public DateTime StartTime { get; set; }
     [Display(Name = "End Time")]
     public DateTime? EndTime { get; set; }
 
