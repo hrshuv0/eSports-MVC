@@ -1,5 +1,4 @@
-﻿@using System.Globalization
-@model GameDetailsVm?
+﻿@model GameDetailsVm?
 
 @{
     ViewBag.Title = "Game";
@@ -14,7 +13,29 @@
 
     <div>
         <div class="row">
-            <div class="col-7 pe-5">
+            <div class="col-7 pe-3">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <strong>@Model.Game.Name</strong>
+                        </h2>
+                        <figure class="mb-0">
+
+                            <figcaption class="blockquote-footer my-2 text-muted">
+                                Someone famous in <cite title="Source Title">Source Title</cite>
+                            </figcaption>
+
+                            <blockquote class="blockquote pt-2">
+                                <p>A well-known quote, contained in a blockquote element.
+                                    A well-known quote, contained in a blockquote element.
+                                    A well-known quote, contained in a blockquote element.
+                                    A well-known quote, contained in a blockquote element.
+                                    A well-known quote, contained in a blockquote element.</p>
+                            </blockquote>
+                        </figure>
+                    </div>
+                </div>
+
 
             </div>
 
@@ -24,7 +45,7 @@
                         <div class="card-body">
                             <div class="divider divider-warning">
                                 <h2 style="font-size: 1.8rem" class="divider-text">Tournaments</h2>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -43,8 +64,9 @@
                                                 This is a wider card with supporting text below as a natural lead-in to additional content.
                                                 This content is a little bit longer.
                                             </p>
-                                            <p class="card-text"> Start time : 
-                                                <small class="">@tournament.StartTime.ToString("dd MMMM yyyy, hh:mm tt")</small> 
+                                            <p class="card-text">
+                                                Start time :
+                                                <small class="">@tournament.StartTime.ToString("dd MMMM yyyy, hh:mm tt")</small>
                                             </p>
                                         </div>
                                     </div>

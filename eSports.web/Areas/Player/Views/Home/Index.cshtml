@@ -17,7 +17,7 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="@idx" class="@idxClass" aria-current="@ariaCurrent" aria-label="Slide @idx"></button>
             }
         </div>
-        <div class="carousel-inner" role="listbox" style="height: 500px;">
+        <div class="carousel-inner" role="listbox" >
 
             @foreach (var game in Model.Games!)
             {
@@ -25,7 +25,7 @@
                 var activeImage = imageNumber == 1 ? "active" : "";
 
                 <div class="carousel-item @activeImage">
-                    <img src="@game.ImageUrl" class="d-block w-100" alt="...">
+                    <img src="@game.ImageUrl" class="d-block w-100 img-fluid" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>@game.Name</h3>
                         <p>@game.Description</p>
