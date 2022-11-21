@@ -167,7 +167,7 @@
                 </ul>
             </li>
 
-            
+
             <li class="">
                 <a class="sidenav-item-link" href="#">
                     <span class="nav-text">Switcher</span>
@@ -185,52 +185,71 @@
 
 <li class="has-sub ">
     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#games"
-           aria-expanded="false" aria-controls="games">
-            <i class="mdi mdi-gamepad"></i>
-            <span class="nav-text">Game</span> <b class="caret"></b>
-        </a>
-    
-        <ul class="collapse " id="games" data-parent="#sidebar-menu">
-            <div class="sub-menu">
-                <li class="has-sub ">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons"
-                       aria-expanded="false" aria-controls="buttons">
-                        <span class="nav-text">Manage</span> <b class="caret"></b>
-                    </a>
-    
-                    <ul class="collapse " id="buttons">
-                        <div class="sub-menu">
-                            <li class="">
-                                <a asp-controller="Games" asp-action="Index">Game List</a>
-                            </li>
-    
-                            <li class="">
-                                <a asp-controller="Games" asp-action="Create">Create New</a>
-                            </li>
-    
-                            <li class="">
-                                <a href="#">field</a>
-                            </li>
-    
-    
-                        </div>
-                    </ul>
-                </li>
-    
-                
-                <li class="">
-                    <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Switcher</span>
-                    </a>
-                </li>
-    
-                <li class="">
-                    <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Tab</span>
-                    </a>
-                </li>
-            </div>
-        </ul>
+       aria-expanded="false" aria-controls="games">
+        <i class="mdi mdi-gamepad"></i>
+        <span class="nav-text">Game</span> <b class="caret"></b>
+    </a>
+
+    <ul class="collapse " id="games" data-parent="#sidebar-menu">
+        <div class="sub-menu">
+            <li class="has-sub">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons"
+                   aria-expanded="false" aria-controls="buttons">
+                    <span class="nav-text">Manage</span> <b class="caret"></b>
+                </a>
+
+                <ul class="collapse " id="buttons">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Games" asp-action="Index">Game List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Games" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
+            </li>
+
+
+            <li class="has-sub">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#btnGameCategory"
+                   aria-expanded="false" aria-controls="btnGameCategory">
+                    <span class="nav-text">Category</span> <b class="caret"></b>
+                </a>
+
+                <ul class="collapse " id="btnGameCategory">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Categories" asp-action="Index">Category List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Categories" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
+            </li>
+
+            <li class="">
+                <a class="sidenav-item-link" href="#">
+                    <span class="nav-text">Tab</span>
+                </a>
+            </li>
+        </div>
+    </ul>
 </li>
 
 <li class="has-sub ">

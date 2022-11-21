@@ -10,11 +10,11 @@
     <div class="">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
-                <h2>Add Game</h2>
+                <h1>Add Game</h1>
             </div>
 
             <div class="card-body">
-                <form class="horizontal-form">
+                <form class="horizontal-form" asp-area="Admin" asp-controller="Games" asp-action="Create" method="post" enctype="multipart/form-data">
 
                     <div class="row">
                         <div class="col-8">
@@ -25,6 +25,7 @@
 
                                 <div class="col-12 col-md-9">
                                     <input asp-for="Game.Name" type="text" class="form-control" placeholder="Game Name">
+                                    <span asp-validation-for="Game.Name" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -43,7 +44,7 @@
                             <div class="form-group row">
                                 <label class="col-12 col-md-3 text-right" asp-for="Game.ImageUrl"></label>
                                 <div class="col-12 col-md-9">
-                                    <input type="file" name="file" asp-for="Game.ImageUrl" class="form-control"/>
+                                    <input type="file" name="file" asp-for="Game.ImageUrl" id="uploadImage" onchange="updateImage(event)" class="form-control"/>
                                 </div>
                             </div>
 
@@ -58,7 +59,7 @@
                             </div>
                         </div>
                         <div class="col-4">
-                            <img src="~/images/default.jpg" alt="" class="w-100"/>
+                            <img src="~/images/default.jpg" id="gameImage" alt="" class="w-100"/>
 
                         </div>
 
@@ -77,3 +78,18 @@
     </div>
 
 </div>
+
+@section Scripts
+{
+    <script>
+    function updateImage(event)
+    {
+        let image = URL.createObjectURL(event.target.files[0]);
+        let gameImage = document.getElementById("gameImage");
+        gameImage.src = image;        
+        
+    }
+        
+    </script>
+
+}
