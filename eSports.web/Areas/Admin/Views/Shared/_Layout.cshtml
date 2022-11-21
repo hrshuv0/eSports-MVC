@@ -128,41 +128,6 @@
     </ul>
 </li>
 
-<li class="has-sub ">
-    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
-       aria-expanded="false" aria-controls="app">
-        <i class="mdi mdi-pencil-box-multiple"></i>
-        <span class="nav-text">App</span> <b class="caret"></b>
-    </a>
-
-    <ul class="collapse " id="app" data-parent="#sidebar-menu">
-        <div class="sub-menu">
-            <li class="">
-                <a class="sidenav-item-link" href="chat.html">
-                    <span class="nav-text">Chat</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="contacts.html">
-                    <span class="nav-text">Contacts</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="team.html">
-                    <span class="nav-text">Team</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="calendar.html">
-                    <span class="nav-text">Calendar</span>
-                </a>
-            </li>
-        </div>
-    </ul>
-</li>
 
 <!-- <li class="section-title">
     UI Elements
@@ -171,7 +136,7 @@
 <li class="has-sub ">
     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tournament"
        aria-expanded="false" aria-controls="tournament">
-        <i class="mdi mdi-folder-multiple-outline"></i>
+        <i class="mdi mdi-tournament"></i>
         <span class="nav-text">Tournament</span> <b class="caret"></b>
     </a>
 
@@ -202,68 +167,15 @@
                 </ul>
             </li>
 
-            <li class="">
-                <a class="sidenav-item-link" href="card.html">
-                    <span class="nav-text">Card</span>
-                </a>
-            </li>
 
             <li class="">
-                <a class="sidenav-item-link" href="carousel.html">
-                    <span class="nav-text">Carousel</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="collapse.html">
-                    <span class="nav-text">Collapse</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="list-group.html">
-                    <span class="nav-text">List Group</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="modal.html">
-                    <span class="nav-text">Modal</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="pagination.html">
-                    <span class="nav-text">Pagination</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="popover-tooltip.html">
-                    <span class="nav-text">Popover & Tooltip</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="progress-bar.html">
-                    <span class="nav-text">Progress Bar</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="spinner.html">
-                    <span class="nav-text">Spinner</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="switcher.html">
+                <a class="sidenav-item-link" href="#">
                     <span class="nav-text">Switcher</span>
                 </a>
             </li>
 
             <li class="">
-                <a class="sidenav-item-link" href="tab.html">
+                <a class="sidenav-item-link" href="#">
                     <span class="nav-text">Tab</span>
                 </a>
             </li>
@@ -272,23 +184,68 @@
 </li>
 
 <li class="has-sub ">
-    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
-       aria-expanded="false" aria-controls="icons">
-        <i class="mdi mdi-diamond-stone"></i>
-        <span class="nav-text">Icons</span> <b class="caret"></b>
+    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#games"
+       aria-expanded="false" aria-controls="games">
+        <i class="mdi mdi-gamepad"></i>
+        <span class="nav-text">Game</span> <b class="caret"></b>
     </a>
 
-    <ul class="collapse " id="icons" data-parent="#sidebar-menu">
+    <ul class="collapse " id="games" data-parent="#sidebar-menu">
         <div class="sub-menu">
-            <li class="">
-                <a class="sidenav-item-link" href="material-icon.html">
-                    <span class="nav-text">Material Icon</span>
+            <li class="has-sub">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons"
+                   aria-expanded="false" aria-controls="buttons">
+                    <span class="nav-text">Manage</span> <b class="caret"></b>
                 </a>
+
+                <ul class="collapse " id="buttons">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Games" asp-action="Index">Game List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Games" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
+            </li>
+
+
+            <li class="has-sub">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#btnGameCategory"
+                   aria-expanded="false" aria-controls="btnGameCategory">
+                    <span class="nav-text">Category</span> <b class="caret"></b>
+                </a>
+
+                <ul class="collapse " id="btnGameCategory">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Categories" asp-action="Index">Category List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Categories" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
             </li>
 
             <li class="">
-                <a class="sidenav-item-link" href="flag-icon.html">
-                    <span class="nav-text">Flag Icon</span>
+                <a class="sidenav-item-link" href="#">
+                    <span class="nav-text">Tab</span>
                 </a>
             </li>
         </div>
