@@ -82,20 +82,10 @@
 <!-- Aplication Brand -->
 <div class="app-brand">
     <a asp-area="Player" asp-controller="Home" asp-action="Index">
-        <svg
-            class="brand-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid"
-            width="30"
-            height="33"
-            viewBox="0 0 30 33">
-            <g fill="none" fill-rule="evenodd">
-                <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z"/>
-                <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z"/>
-            </g>
-        </svg>
+        <img alt="" src="~/images/logo.png" class="brand-icon"/>
 
-        <span class="brand-name text-truncate">eSports BD</span>
+
+        <span class="brand-name text-truncate"></span>
     </a>
 </div>
 
@@ -168,10 +158,29 @@
             </li>
 
 
-            <li class="">
-                <a class="sidenav-item-link" href="#">
-                    <span class="nav-text">Switcher</span>
+            <li class="has-sub ">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#prizes"
+                   aria-expanded="false" aria-controls="prizes">
+                    <span class="nav-text">Prize</span> <b class="caret"></b>
                 </a>
+
+                <ul class="collapse " id="prizes">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Prizes" asp-action="Index">Prize List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Prizes" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
             </li>
 
             <li class="">
