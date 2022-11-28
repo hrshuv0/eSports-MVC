@@ -4,7 +4,9 @@
 <nav class="layout-navbar container-xxl navbar navbar-expand-lg navbar-detached align-items-center bg-navbar-theme">
     
     <div class="container-fluid">
-        <a class="navbar-brand"  asp-area="Admin" asp-controller="Dashboard" asp-action="Index">eSports</a>
+        <a class="navbar-brand" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+            <img src="images/logo.png" alt=""/>
+        </a>
         <button
             class="navbar-toggler"
             type="button"
@@ -20,7 +22,7 @@
                 <a class="nav-item nav-link" asp-area="Player" asp-controller="Tournament" asp-action="Index">Tournament</a>
                 <a class="nav-item nav-link" href="javascript:void(0)">Gallary</a>
                 <a class="nav-item nav-link" href="javascript:void(0)">Streaming</a>
-                <a class="nav-item nav-link" href="javascript:void(0)">Clan</a>
+                <a class="nav-item nav-link" asp-area="Player" asp-controller="Clans" asp-action="Index">Clan</a>
             </div>
 
 
