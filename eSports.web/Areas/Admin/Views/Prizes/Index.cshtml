@@ -10,7 +10,7 @@
         <div class="p-3 card-header-border-bottom">
             <div class="row">
                 <div class="col-8">
-                    <h1>Tournaments</h1>
+                    <h1>Prizes</h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end ">
                     <a asp-area="Admin" asp-controller="Prizes" asp-action="Create" class="btn btn-success">Create</a>
@@ -37,9 +37,9 @@
                 {
                     <tr>
                         <td scope="row">@prize.PrizeName</td>
-                        <td>@prize.PlaceName</td>
-                        <td>@prize.PrizeAmount2</td>
-                        <td>@prize.PrizeAmount3</td>
+                        <td>@prize.PrizeAmount.ToString("c")</td>
+                        <td>@prize.PrizeAmount2.ToString("c")</td>
+                        <td>@prize.PrizeAmount3.ToString("c")</td>
                         <td class="text-center">
                             <div class="w-75 btn-group text-center" role="group">
                                 <a asp-controller="Tournaments" asp-action="Edit" asp-route-id="@prize.Id"

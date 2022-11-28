@@ -29,6 +29,7 @@
       <Folder Include="Areas\Admin\Models" />
       <Folder Include="Areas\Admin\Pages" />
       <Folder Include="Areas\Player\Data" />
+      <Folder Include="Areas\Player\Pages" />
       <Folder Include="Controllers" />
       <Folder Include="wwwroot\images\games" />
     </ItemGroup>

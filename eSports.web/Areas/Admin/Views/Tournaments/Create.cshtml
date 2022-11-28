@@ -15,7 +15,7 @@
             </div>
 
             <div class="card-body">
-                <form class="horizontal-form" asp-area="Admin" asp-controller="Tournaments" asp-action="Create" method="post" enctype="multipart/form-data">
+                <form class="horizontal-form" asp-area="Admin" asp-controller="Tournaments" asp-action="Create" method="post">
 
                     <div class="row">
                         <div class="col-6">
@@ -25,8 +25,8 @@
                                 </div>
 
                                 <div class="col-12 col-md-9">
-                                    <input asp-for="Tournament.Name" type="text" class="form-control" placeholder="Game Name">
-                                    <span asp-validation-for="Tournament.Name" class="text-danger"></span>
+                                    <input asp-for="Tournament!.Name" type="text" class="form-control" placeholder="Game Name">
+                                    <span asp-validation-for="Tournament!.Name" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -36,7 +36,7 @@
                                 </div>
 
                                 <div class="col-12 col-md-9">
-                                    <select asp-for="Tournament.TournamentCategory" asp-items="Model.CategoryList" class="form-control">
+                                    <select asp-for="Tournament.TournamentCategoryId" asp-items="Model.CategoryList" class="form-control">
                                         <option disabled selected>--Select Category--</option>
                                     </select>
                                 </div>
