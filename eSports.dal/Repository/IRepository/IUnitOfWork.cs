@@ -9,6 +9,7 @@ public interface IUnitOfWork
     IPrizeRepository Prize { get; }
     IPlayerRepository Player { get; }
     ITeamRepository Team { get; }
+    IClanRepository Clan { get; }
     
 
 
