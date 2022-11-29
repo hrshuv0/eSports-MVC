@@ -14,6 +14,7 @@ public class UnitOfWork : IUnitOfWork
     public IPrizeRepository Prize { get; }
     public IPlayerRepository Player { get; }
     public ITeamRepository Team { get; }
+    public IClanRepository Clan { get; }
 
     public UnitOfWork(ApplicationDbContext dbContext)
     {
@@ -26,6 +27,7 @@ public class UnitOfWork : IUnitOfWork
         Prize = new PrizeRepository(_dbContext);
         Player = new PlayerRepository(_dbContext);
         Team = new TeamRepository(_dbContext);
+        Clan = new ClanRepository(_dbContext);
     }
 
 

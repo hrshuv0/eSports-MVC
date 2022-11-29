@@ -32,4 +32,5 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<Prize>? Prizes { get; set; }
     public DbSet<ApplicationUser>? ApplicationUser { get; set; }
     public DbSet<Team>? Teams { get; set; }
+    public DbSet<Clan>? Clans { get; set; }
 }
