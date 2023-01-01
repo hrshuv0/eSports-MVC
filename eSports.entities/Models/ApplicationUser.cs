@@ -26,6 +26,11 @@ public class ApplicationUser : IdentityUser
     [ForeignKey("TeamId")]
     [ValidateNever]
     public Team? Team { get; set; }
+
+    public int? ClanId { get; set; }
+    [ForeignKey("ClanId")]
+    [ValidateNever]
+    public Clan? Clan { get; set; }
     
     
 }
