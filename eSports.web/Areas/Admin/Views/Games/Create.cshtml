@@ -5,62 +5,91 @@
     ViewData["Title"] = "Game";
 }
 
-<div class="container mt-5 col-lg-8">
-    <div style="background-color: #d9d9d9">
-        <form method="post" enctype="multipart/form-data">
+<div class="container mt-5">
 
-            <div >
-                <div class="ms-3 pt-2">
-                    <h2>Add Game</h2>
-                    <p>Add new Game content using the form below</p>
-                </div>
-
-                <div class="mx-3 p-3" style="background-color: #f1f1f1">
-                    <div class="form-group row">
-                        <label class="col-4 col-form-label" asp-for="Game.Name"></label>
-                        <div class="col-8">
-                            <input asp-for="Game.Name" class="form-control"/>
-                            <span asp-validation-for="Game.Name" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-2">
-                        <label class="col-4 col-form-label" asp-for="Game.ImageUrl"></label>
-                        <div class="col-8">
-                            <input type="file" name="file" asp-for="Game.ImageUrl" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-2">
-                        <label class="col-4 col-form-label" asp-for="Game.CategoryId"></label>
-                        <div class="col-8">
-                            <select asp-for="Game.CategoryId" asp-items="Model.CategoryList" class="form-select">
-                                <option disabled selected>--Select Category--</option>
-                            </select>
-                            <span asp-validation-for="Game.CategoryId" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-2">
-                        <label class="col-4 col-form-label" asp-for="Game.Description"></label>
-                        <div class="col-8">
-                            <input asp-for="Game.Description" class="form-control"/>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div class="ms-3 pt-3 pb-3 row">
-                    <button type="submit" class="btn btn-success" style="width: 48%">Create</button>
-                    <a class="btn btn-secondary ms-2" style="width: 48%" asp-action="Index">Back to list</a>
-                </div>
-
-                @* <div class="ms-3 pt-3 pb-3 row"> *@
-                @*     <button type="submit" class="btn btn-success" style="width: 48%">Create</button> *@
-                @*     <a class="btn btn-secondary ms-2" style="width: 48%" asp-action="Index">Back to list</a> *@
-                @* </div> *@
-
-
+    <div class="">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h1>Add Game</h1>
             </div>
 
-        </form>
+            <div class="card-body">
+                <form class="horizontal-form" asp-area="Admin" asp-controller="Games" asp-action="Create" method="post" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group row">
+                                <div class="col-12 col-md-3 text-right">
+                                    <label asp-for="Game.Name"></label>
+                                </div>
+
+                                <div class="col-12 col-md-9">
+                                    <input asp-for="Game.Name" type="text" class="form-control" placeholder="Game Name">
+                                    <span asp-validation-for="Game.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-md-3 text-right">
+                                    <label asp-for="Game.Category"></label>
+                                </div>
+
+                                <div class="col-12 col-md-9">
+                                    <select asp-for="Game.CategoryId" asp-items="Model.CategoryList" class="form-control">
+                                        <option disabled selected>--Select Category--</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-12 col-md-3 text-right" asp-for="Game.ImageUrl"></label>
+                                <div class="col-12 col-md-9">
+                                    <input type="file" name="file" asp-for="Game.ImageUrl" id="uploadImage" onchange="updateImage(event)" class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12 col-md-3 text-right">
+                                    <label asp-for="Game.Description"></label>
+                                </div>
+
+                                <div class="col-12 col-md-9">
+                                    <textarea asp-for="Game.Description" type="text" class="form-control" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/images/default.jpg" id="gameImage" alt="" class="w-100"/>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-footer pt-5 border-top offset-2 row">
+                        <button type="submit" class="btn btn-success btn-default w-25 mr-2">Create</button>
+                        <a class="btn btn-secondary w-25" asp-action="Index">Back to list</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
     </div>
 
 </div>
+
+@section Scripts
+{
+    <script>
+    function updateImage(event)
+    {
+        let image = URL.createObjectURL(event.target.files[0]);
+        let gameImage = document.getElementById("gameImage");
+        gameImage.src = image;        
+        
+    }
+        
+    </script>
+
+}
