@@ -82,20 +82,10 @@
 <!-- Aplication Brand -->
 <div class="app-brand">
     <a asp-area="Player" asp-controller="Home" asp-action="Index">
-        <svg
-            class="brand-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid"
-            width="30"
-            height="33"
-            viewBox="0 0 30 33">
-            <g fill="none" fill-rule="evenodd">
-                <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z"/>
-                <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z"/>
-            </g>
-        </svg>
+        <img alt="" src="~/images/logo.png" class="brand-icon"/>
 
-        <span class="brand-name text-truncate">eSports BD</span>
+
+        <span class="brand-name text-truncate"></span>
     </a>
 </div>
 
@@ -128,41 +118,6 @@
     </ul>
 </li>
 
-<li class="has-sub ">
-    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
-       aria-expanded="false" aria-controls="app">
-        <i class="mdi mdi-pencil-box-multiple"></i>
-        <span class="nav-text">App</span> <b class="caret"></b>
-    </a>
-
-    <ul class="collapse " id="app" data-parent="#sidebar-menu">
-        <div class="sub-menu">
-            <li class="">
-                <a class="sidenav-item-link" href="chat.html">
-                    <span class="nav-text">Chat</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="contacts.html">
-                    <span class="nav-text">Contacts</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="team.html">
-                    <span class="nav-text">Team</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="calendar.html">
-                    <span class="nav-text">Calendar</span>
-                </a>
-            </li>
-        </div>
-    </ul>
-</li>
 
 <!-- <li class="section-title">
     UI Elements
@@ -171,7 +126,7 @@
 <li class="has-sub ">
     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#tournament"
        aria-expanded="false" aria-controls="tournament">
-        <i class="mdi mdi-folder-multiple-outline"></i>
+        <i class="mdi mdi-tournament"></i>
         <span class="nav-text">Tournament</span> <b class="caret"></b>
     </a>
 
@@ -202,68 +157,34 @@
                 </ul>
             </li>
 
-            <li class="">
-                <a class="sidenav-item-link" href="card.html">
-                    <span class="nav-text">Card</span>
+
+            <li class="has-sub ">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#prizes"
+                   aria-expanded="false" aria-controls="prizes">
+                    <span class="nav-text">Prize</span> <b class="caret"></b>
                 </a>
+
+                <ul class="collapse " id="prizes">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Prizes" asp-action="Index">Prize List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Prizes" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
             </li>
 
             <li class="">
-                <a class="sidenav-item-link" href="carousel.html">
-                    <span class="nav-text">Carousel</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="collapse.html">
-                    <span class="nav-text">Collapse</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="list-group.html">
-                    <span class="nav-text">List Group</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="modal.html">
-                    <span class="nav-text">Modal</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="pagination.html">
-                    <span class="nav-text">Pagination</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="popover-tooltip.html">
-                    <span class="nav-text">Popover & Tooltip</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="progress-bar.html">
-                    <span class="nav-text">Progress Bar</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="spinner.html">
-                    <span class="nav-text">Spinner</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="switcher.html">
-                    <span class="nav-text">Switcher</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="sidenav-item-link" href="tab.html">
+                <a class="sidenav-item-link" href="#">
                     <span class="nav-text">Tab</span>
                 </a>
             </li>
@@ -272,23 +193,68 @@
 </li>
 
 <li class="has-sub ">
-    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
-       aria-expanded="false" aria-controls="icons">
-        <i class="mdi mdi-diamond-stone"></i>
-        <span class="nav-text">Icons</span> <b class="caret"></b>
+    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#games"
+       aria-expanded="false" aria-controls="games">
+        <i class="mdi mdi-gamepad"></i>
+        <span class="nav-text">Game</span> <b class="caret"></b>
     </a>
 
-    <ul class="collapse " id="icons" data-parent="#sidebar-menu">
+    <ul class="collapse " id="games" data-parent="#sidebar-menu">
         <div class="sub-menu">
-            <li class="">
-                <a class="sidenav-item-link" href="material-icon.html">
-                    <span class="nav-text">Material Icon</span>
+            <li class="has-sub">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#buttons"
+                   aria-expanded="false" aria-controls="buttons">
+                    <span class="nav-text">Manage</span> <b class="caret"></b>
                 </a>
+
+                <ul class="collapse " id="buttons">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Games" asp-action="Index">Game List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Games" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
+            </li>
+
+
+            <li class="has-sub">
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#btnGameCategory"
+                   aria-expanded="false" aria-controls="btnGameCategory">
+                    <span class="nav-text">Category</span> <b class="caret"></b>
+                </a>
+
+                <ul class="collapse " id="btnGameCategory">
+                    <div class="sub-menu">
+                        <li class="">
+                            <a asp-controller="Categories" asp-action="Index">Category List</a>
+                        </li>
+
+                        <li class="">
+                            <a asp-controller="Categories" asp-action="Create">Create New</a>
+                        </li>
+
+                        <li class="">
+                            <a href="#">field</a>
+                        </li>
+
+
+                    </div>
+                </ul>
             </li>
 
             <li class="">
-                <a class="sidenav-item-link" href="flag-icon.html">
-                    <span class="nav-text">Flag Icon</span>
+                <a class="sidenav-item-link" href="#">
+                    <span class="nav-text">Tab</span>
                 </a>
             </li>
         </div>
@@ -555,14 +521,6 @@
                         </li>
 
                         <li class="">
-                            <a href="header-static.html">Header Static</a>
-                        </li>
-
-                        <li class="">
-                            <a href="header-light.html">Header Light</a>
-                        </li>
-
-                        <li class="">
                             <a href="header-dark.html">Header Dark</a>
                         </li>
                     </div>
@@ -577,35 +535,11 @@
                 <ul class="collapse " id="sidebar-variations">
                     <div class="sub-menu">
                         <li class="">
-                            <a href="sidebar-fixed-default.html">Sidebar Fixed Default</a>
+                            <a href="#">Sidebar Fixed Default</a>
                         </li>
 
                         <li class="">
                             <a href="sidebar-fixed-minified.html">Sidebar Fixed Minified</a>
-                        </li>
-
-                        <li class="">
-                            <a href="sidebar-fixed-offcanvas.html">Sidebar Fixed Offcanvas</a>
-                        </li>
-
-                        <li class="">
-                            <a href="sidebar-static-default.html">Sidebar Static Default</a>
-                        </li>
-
-                        <li class="">
-                            <a href="sidebar-static-minified.html">Sidebar Static Minified</a>
-                        </li>
-
-                        <li class="">
-                            <a href="sidebar-static-offcanvas.html">Sidebar Static Offcanvas</a>
-                        </li>
-
-                        <li class="">
-                            <a href="sidebar-with-footer.html">Sidebar With Footer</a>
-                        </li>
-
-                        <li class="">
-                            <a href="sidebar-without-footer.html">Sidebar Without Footer</a>
                         </li>
 
                         <li class="">
@@ -630,26 +564,6 @@
 </ul>
 </div>
 
-<div class="sidebar-footer">
-    <hr class="separator mb-0"/>
-    <div class="sidebar-footer-content">
-        <h6 class="text-uppercase">
-            Cpu Uses <span class="float-right">40%</span>
-        </h6>
-
-        <div class="progress progress-xs">
-            <div class="progress-bar active" style="width: 40%;" role="progressbar"></div>
-        </div>
-
-        <h6 class="text-uppercase">
-            Memory Uses <span class="float-right">65%</span>
-        </h6>
-
-        <div class="progress progress-xs">
-            <div class="progress-bar progress-bar-warning" style="width: 65%;" role="progressbar"></div>
-        </div>
-    </div>
-</div>
 </div>
 </aside>
 
