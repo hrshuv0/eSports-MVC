@@ -4,59 +4,67 @@
     ViewData["Title"] = "Game";
 }
 
-<div class="container p-3 mt-5  bg-gradient">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h2 class="text-info">Game List</h2>
-        </div>
-        <div class="col-6 text-end">
-            <a asp-controller="Games" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> &nbsp;Create New
-            </a>
 
+<div class="container mt-5">
+    <div class="card card-default">
+        <div class="p-3 card-header-border-bottom">
+            <div class="row">
+                <div class="col-8">
+                    <h1>Games</h1>
+                </div>
+                <div class="col-4 d-flex justify-content-end ">
+                    <a asp-area="Admin" asp-controller="Games" asp-action="Create" class="btn btn-success">Create</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover ">
+                <thead>
+                <tr class="text-center">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                @foreach (var item in Model!)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.ImageUrl" style="width: 50px;height: 50px;"/>
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Category!.Name</td>
+                        <td class="text-center">
+                            <div class="w-75 btn-group text-center" role="group">
+                                <a asp-controller="Games" asp-action="Edit" asp-route-id="@item.Id"
+                                   class="btn-sm btn-secondary m-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Games" asp-action="Details" asp-route-id="@item.Id"
+                                   class="btn-sm btn-info m-2">
+                                    <i class="bi bi-trash-fill"></i> Details
+                                </a>
+                                <a asp-controller="Games" asp-action="Delete" asp-route-id="@item.Id"
+                                   class="btn-sm btn-danger m-2">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+
+
+                </tbody>
+            </table>
         </div>
     </div>
-    <br/><br/>
-
-
-    <table class="table table-bordered table-striped table-dark" style="width: 100%">
-        <thead>
-        <tr class="text-center">
-            <th></th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <img src="@item.ImageUrl" style="width: 50px;height: 50px;"/>
-                </td>
-                <td>@item.Name</td>
-                <td>@item.Category!.Name</td>
-                <td class="text-center">
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Games" asp-action="Edit" asp-route-id="@item.Id"
-                           class="btn btn-primary m-2">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </a>
-                        <a asp-controller="Games" asp-action="Details" asp-route-id="@item.Id"
-                           class="btn btn-info m-2">
-                            <i class="bi bi-trash-fill"></i> Details
-                        </a>
-                        <a asp-controller="Games" asp-action="Delete" asp-route-id="@item.Id"
-                           class="btn btn-warning m-2">
-                            <i class="bi bi-trash-fill"></i> Delete
-                        </a>
-                    </div>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-
-
 </div>
